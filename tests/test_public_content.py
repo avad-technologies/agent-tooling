@@ -26,6 +26,19 @@ class PublicContentTests(unittest.TestCase):
         for text in ("Confidential Example", "confidential-example"):
             self.assertEqual(CHECKER.text_issues(text, {digest}), [(1, "private vocabulary")])
 
+    def test_public_repository_links_do_not_allow_other_private_content(self):
+        repository = CHECKER.PUBLIC_REPOSITORY_URL
+        for suffix in ("", ".git", "/releases", "#build-from-source"):
+            self.assertEqual(CHECKER.text_issues(repository + suffix), [])
+        other_repository = repository.rsplit("/", 1)[0] + "/private-fixture"
+        self.assertIn((1, "private vocabulary"), CHECKER.text_issues(other_repository))
+        self.assertIn((1, "private vocabulary"), CHECKER.text_issues(repository + "-private"))
+        digest = hashlib.sha256(b"confidentialfixture").hexdigest()
+        self.assertEqual(
+            CHECKER.text_issues(repository + " ConfidentialFixture", {digest}),
+            [(1, "private vocabulary")],
+        )
+
     def test_personal_paths_and_accounts_are_rejected_but_examples_are_allowed(self):
         private_path = "/Users/" + "realperson/Documents"
         private_email = "person@" + "private.invalid"

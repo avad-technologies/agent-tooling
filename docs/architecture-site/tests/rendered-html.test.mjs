@@ -12,9 +12,9 @@ test("exports the public app guide with accurate installation links", async () =
   for (const client of ["Codex", "Claude Code", "Gemini CLI", "Kiro CLI"]) {
     assert.ok(html.includes(client), `Missing supported client: ${client}`);
   }
-  assert.match(html, /first public DMG has not been published yet/);
-  assert.match(html, /href="https:\/\/github\.com\/adalloul0928\/agent-tooling\/releases"/);
-  assert.match(html, /href="https:\/\/github\.com\/adalloul0928\/agent-tooling#build-from-source"/);
+  assert.match(html, /Signed and notarized 0.1.0 preview available/);
+  assert.ok(html.includes('href="https://github.com/avad-technologies/agent-tooling/releases"'));
+  assert.ok(html.includes('href="https://github.com/avad-technologies/agent-tooling#build-from-source"'));
   assert.match(html, /Apple Silicon/);
   assert.match(html, /macOS 26/);
 });

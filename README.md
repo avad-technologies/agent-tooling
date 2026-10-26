@@ -7,8 +7,8 @@ Keep a local library, choose where tools are installed, and review changes to
 your setup.
 
 [App guide](apps/agent-tooling-macos/README.md) ·
-[Releases](https://github.com/adalloul0928/agent-tooling/releases) ·
-[Report an issue](https://github.com/adalloul0928/agent-tooling/issues)
+[Releases](https://github.com/avad-technologies/agent-tooling/releases) ·
+[Report an issue](https://github.com/avad-technologies/agent-tooling/issues)
 
 ![Home: connected apps, library status, and recent activity](docs/images/app-home.png)
 
@@ -16,11 +16,11 @@ your setup.
 
 **Requires macOS 26 or later and an Apple Silicon Mac.**
 
-The first public DMG has not been published yet. [Build from source](#build-from-source)
-to try the app today, or check [Releases](https://github.com/adalloul0928/agent-tooling/releases)
-for a signed download.
+**[Download the signed and notarized 0.1.0 preview](https://github.com/avad-technologies/agent-tooling/releases/download/agent-tooling-app-v0.1.0/Agent-Tooling-arm64.dmg).**
+See [release notes and checksums](https://github.com/avad-technologies/agent-tooling/releases/tag/agent-tooling-app-v0.1.0)
+for validation details and preview limitations.
 
-Once a release is available, open `Agent-Tooling-arm64.dmg`, drag **Agent
+Open `Agent-Tooling-arm64.dmg`, drag **Agent
 Tooling** into **Applications**, eject the DMG, and open the app. To update,
 quit Agent Tooling and replace it with the new version.
 
@@ -68,7 +68,7 @@ See [privacy and feature limits](apps/agent-tooling-macos/README.md#assistants-a
 Install Xcode with the macOS 26 SDK and Swift 6.2 or later, then run:
 
 ```sh
-git clone https://github.com/adalloul0928/agent-tooling.git
+git clone https://github.com/avad-technologies/agent-tooling.git
 cd agent-tooling/apps/agent-tooling-macos
 ./scripts/package-app.sh
 open '.build/Agent Tooling.app'
@@ -89,7 +89,7 @@ the CI checks, including Thread Sanitizer and release builds.
 
 ## Contribute
 
-Report bugs and request features in [GitHub Issues](https://github.com/adalloul0928/agent-tooling/issues).
+Report bugs and request features in [GitHub Issues](https://github.com/avad-technologies/agent-tooling/issues).
 Include the app version, macOS version, and steps to reproduce. Remove account
 details, secrets, and private paths from logs before sharing them.
 

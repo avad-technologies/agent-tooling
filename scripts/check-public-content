@@ -48,6 +48,12 @@ EXAMPLE_HOME = re.compile(r"^(?:example(?:2|ish|-work)?|exam|ex|me(?:2|ow)?|fixt
 EMAIL = re.compile(r"[\w.+%-]+@([\w.-]+\.[A-Za-z]{2,})")
 RETINA_IMAGE = re.compile(r"[\w.-]+@[23]x\.(?:png|jpe?g|gif|webp)", re.I)
 LINK = re.compile(r"!?\[[^]\n]*\]\(([^)\n]+)\)")
+# This repository is now public; other organization URLs remain subject to the
+# private-vocabulary check, as does any private text beside a public link.
+PUBLIC_REPOSITORY_URL = "https://github.com/avad-technologies/agent-tooling"
+PUBLIC_REPOSITORY_LINK = re.compile(
+    re.escape(PUBLIC_REPOSITORY_URL) + r"(?:\.git)?(?=$|[/#?\"'`)\s])"
+)
 
 
 def text_issues(text, private_hashes=None):
@@ -55,7 +61,8 @@ def text_issues(text, private_hashes=None):
         private_hashes = PRIVATE_WORD_HASHES
     issues = []
     for number, line in enumerate(text.splitlines(), 1):
-        words = re.findall(r"[A-Za-z0-9]+", line.lower())
+        vocabulary_line = PUBLIC_REPOSITORY_LINK.sub("public-repository", line)
+        words = re.findall(r"[A-Za-z0-9]+", vocabulary_line.lower())
         candidates = ("-".join(words[start:start + count])
                       for start in range(len(words)) for count in range(1, min(4, len(words) - start) + 1))
         if any(hashlib.sha256(word.encode()).hexdigest() in private_hashes for word in candidates):

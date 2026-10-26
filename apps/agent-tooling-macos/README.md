@@ -10,10 +10,10 @@ stores its workspace in SQLite.
 
 ## Install
 
-Requires macOS 26 or later and Apple Silicon. The first public DMG has not been
-published yet. [Build from source](#build-and-run) to try the app now, or check
-[Releases](https://github.com/adalloul0928/agent-tooling/releases) for availability.
-When available, download `Agent-Tooling-arm64.dmg`, open it, and drag **Agent Tooling** into
+Requires macOS 26 or later and Apple Silicon. Download the signed and notarized
+[0.1.0 preview](https://github.com/avad-technologies/agent-tooling/releases/tag/agent-tooling-app-v0.1.0),
+or [build from source](#build-and-run).
+Open `Agent-Tooling-arm64.dmg` and drag **Agent Tooling** into
 **Applications**. Eject the DMG and open the app from Applications. To update,
 quit the app and replace it with the new version. Packaged builds do not require
 Xcode or a repository checkout.

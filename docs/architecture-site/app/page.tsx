@@ -1,4 +1,4 @@
-const repository = "https://github.com/adalloul0928/agent-tooling";
+const repository = "https://github.com/avad-technologies/agent-tooling";
 const docs = `${repository}/blob/main/docs`;
 
 const clients = [
@@ -67,7 +67,7 @@ export default function Home() {
             <a className="button secondary" href={`${repository}#build-from-source`}>Build from source</a>
           </div>
           <p className="release-note">
-            The first public DMG has not been published yet. Source builds are available now.
+            Signed and notarized 0.1.0 preview available for Apple Silicon and macOS 26 or later.
           </p>
         </section>
 

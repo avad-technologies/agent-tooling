@@ -4,7 +4,7 @@ Agent Tooling ships as a DMG for **Apple Silicon Macs running macOS 26 or
 later**. Users drag the app into Applications. Xcode, Swift, and a repository
 checkout are not required.
 
-The release workflow signs the app and its helpers with Developer ID, checks
+The CI release workflow signs the app and its helpers with Developer ID, checks
 the packaged resources, verifies the mounted DMG, submits it to Apple for
 notarization, and staples the ticket. GitHub Releases receives the DMG, a
 SHA-256 checksum, an SPDX manifest, and build attestations.
@@ -14,12 +14,19 @@ The app includes the repository's [MIT license](../LICENSE) at
 resource bundle. The SPDX manifest identifies Agent Tooling's license as MIT
 and lists these dependencies separately.
 
-## First release status
+## Current download
 
-A signed public release has not been published yet. The release environment,
-Apple credentials, and repository variables below must be configured first.
-CI artifacts and local development DMGs are ad-hoc signed and are intended for
-testing. They are not notarized public downloads.
+The signed and notarized [0.1.0 preview](https://github.com/avad-technologies/agent-tooling/releases/tag/agent-tooling-app-v0.1.0)
+is available for Apple Silicon and macOS 26 or later. It was built from
+`2bd1cefc84fdce6b44adabd88bcfd72041d1aa0a` using local Developer ID and
+notarization credentials. Its annotated tag points to that exact source commit.
+Release assets include the verified DMG, SHA-256 checksum, and SPDX manifest;
+this local release does not include GitHub build attestations. See its release
+notes for the tested configuration and remaining clean-Mac validation.
+
+The Actions release environment and secrets below must be configured before
+using CI to publish future builds. Local development DMGs use ad-hoc signing
+and are intended for testing; they are not notarized public downloads.
 
 ## Configure signing
 
@@ -92,8 +99,9 @@ Each release includes the same filenames:
 - `Agent-Tooling-arm64.dmg.spdx.json`
 
 The stable DMG filename supports GitHub's
-`releases/latest/download/Agent-Tooling-arm64.dmg` URL. Link to the repository's
-Releases page until the first release is available.
+`releases/latest/download/Agent-Tooling-arm64.dmg` URL for stable releases.
+Previews use the versioned download URL on their release page because GitHub's
+latest-release URL excludes prereleases.
 
 ## Install or update
 
